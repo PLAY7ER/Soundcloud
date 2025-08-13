@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- PLAYER 7 • 3D COVERS (sin librerías, solo CSS) -->
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PLAYER 7 — Tap a face to play</title>
+
+<style>
+  :root { --bg:#0b0b0f; --fg:#eaeaf0; --size: 220px; --radius: 360px; --tilt: -12deg; --speed: 26s; }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; background: var(--bg); color: var(--fg); font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; }
+  header { text-align: center; padding: 20px 12px 10px; }
+  header h1 { margin: 0; font-size: clamp(20px, 3vw, 34px); letter-spacing: .5px; }
+  header p  { margin: 6px 0 0; opacity: .85; font-size: 14px; }
+
+  .stage {
+    height: calc(100svh - 90px);
+    perspective: 1000px;
+    overflow: hidden;
+  }
+  .ring {
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    transform-style: preserve-3d;
+    margin: 0 auto;
+    top: 6vh;
+    animation: spin var(--speed) linear infinite;
+    transform: rotateX(var(--tilt));
+  }
+  @keyframes spin {
+    from { transform: rotateX(var(--tilt)) rotateY(0deg); }
+    to   { transform: rotateX(var(--tilt)) rotateY(360deg); }
+  }
+
+  .cover {
+    position: absolute; inset: 0;
+    width: var(--size); height: var(--size);
+    transform-style: preserve-3d;
+  }
+  .cover a {
+    display: block; width: 100%; height: 100%;
+    border-radius: 16px; overflow: hidden;
+    background: #17171f;
+    box-shadow: 0 10px 30px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
+    transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+    transform: translateZ(var(--radius));
+  }
+  .cover a:hover {
+    transform: translateZ(calc(var(--radius) + 16px)) scale(1.03);
+    box-shadow: 0 18px 40px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.12);
+    filter: brightness(1.02) contrast(1.02);
+  }
+  .cover img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .label {
+    position: absolute; left: 50%; transform: translateX(-50%); bottom: -46px;
+    width: max-content; padding: 6px 10px; font-size: 13px; font-weight: 700;
+    background: rgba(255,255,255,.06); border-radius: 999px; backdrop-filter: blur(6px);
+    opacity: .9;
+  }
+
+  footer {
+    position: fixed; right: 10px; bottom: 8px; font-size: 12px; opacity: .6;
+  }
+
+  /* responsive tweaks */
+  @media (max-width: 700px) {
+    :root { --size: 180px; --radius: 300px; }
+  }
+  @media (max-width: 420px) {
+    :root { --size: 150px; --radius: 260px; }
+  }
+</style>
+
+<header>
+  <h1>PLAYER 7</h1>
+  <p>Electronic Music for Cosmic Journeys.</p>
+</header>
+
+<div class="stage">
+  <div class="ring" id="ring">
+    <!-- Las “caras” se distribuyen 360°/N con CSS inline para que funcione sin JS -->
+
+    <!-- L U N A (0°) -->
+    <div class="cover" style="transform: rotateY(0deg);">
+      <a href="https://soundcloud.com/o-c-player-seven/player-7-l-u-n-a" target="_blank" rel="noopener" title="L U N A — SoundCloud">
+        <img src="https://i1.sndcdn.com/artworks-DnwmqsRWwAozSWHP-z2LNjg-t1080x1080.png" alt="L U N A" loading="eager">
+      </a>
+      <div class="label">L U N A</div>
+    </div>
+
+    <!-- X P L A N E T (90°) -->
+    <div class="cover" style="transform: rotateY(90deg);">
+      <a href="https://soundcloud.com/o-c-player-seven/x-p-l-a-n-e-t-radio-edit" target="_blank" rel="noopener" title="X P L A N E T (Radio Edit) — SoundCloud">
+        <img src="https://i1.sndcdn.com/artworks-LzwORLuhFsWryMvr-k3PzDA-t1080x1080.png" alt="X P L A N E T (Radio Edit)">
+      </a>
+      <div class="label">X P L A N E T</div>
+    </div>
+
+    <!-- N E P T U N O (180°) -->
+    <div class="cover" style="transform: rotateY(180deg);">
+      <a href="https://soundcloud.com/o-c-player-seven/n-e-p-t-u-n-o" target="_blank" rel="noopener" title="N E P T U N O — SoundCloud">
+        <img src="https://i1.sndcdn.com/artworks-NmzhGgs6elfKQZ3J-ciNrKw-t1080x1080.jpg" alt="N E P T U N O">
+      </a>
+      <div class="label">N E P T U N O</div>
+    </div>
+
+    <!-- U R A N O (270°) -->
+    <div class="cover" style="transform: rotateY(270deg);">
+      <a href="https://soundcloud.com/o-c-player-seven/u-r-a-n-o" target="_blank" rel="noopener" title="U R A N O — SoundCloud">
+        <img src="https://i1.sndcdn.com/artworks-re3avOy0pTo3fD2L-zchtVw-t1080x1080.jpg" alt="U R A N O">
+      </a>
+      <div class="label">U R A N O</div>
+    </div>
+
+  </div>
+</div>
+
+<footer>© <span id="year"></span> PLAYER 7</footer>
+
+<script>
+  // año
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Drag para inclinar (sin librerías)
+  const ring = document.getElementById('ring');
+  let dragging = false, startX = 0, rotY = 0;
+  ring.addEventListener('pointerdown', e => { dragging = true; startX = e.clientX; ring.style.animationPlayState = 'paused'; });
+  window.addEventListener('pointerup',   () => { dragging = false; ring.style.animationPlayState = 'running'; });
+  window.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    startX = e.clientX;
+    rotY += dx * 0.25; // sensibilidad
+    ring.style.transform = `rotateX(var(--tilt)) rotateY(${rotY}deg)`;
+  }, {passive:true});
+</script>
+<!-- partial -->
+  <script src='https://unpkg.com/three@0.160.0/build/three.min.js'></script>
+<script src='https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js'></script>
+</body>
+</html>
